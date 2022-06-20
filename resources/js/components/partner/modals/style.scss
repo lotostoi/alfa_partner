@@ -1,0 +1,36 @@
+.header-wrapper-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px;
+}
+
+
+.header-text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.011em;
+    color: #000000;
+}
+
+.content-modal-text {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+}
+
+.header-footer-modal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 24px 41px 36px;
+}

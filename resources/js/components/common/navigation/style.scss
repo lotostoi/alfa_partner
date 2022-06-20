@@ -1,0 +1,31 @@
+.partner-pages-navigation {
+    margin-top: 30px;
+    width: fit-content;
+    display: flex;
+    border-bottom: 1px solid #B6BCC3;
+    height: 36px;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    &>.link {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        color: #546272;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+        text-decoration: none;
+        margin-right: 24px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+
+        &.active {
+            color: #0B1F35;
+            border-bottom: 3px solid #EF3124;
+        }
+    }
+}
