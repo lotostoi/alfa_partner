@@ -1,17 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
-
 import PartnerMainLayout from "../layouts/partner/partner-main-layout";
 
-function News() {
+function MyLinksPage() {
     return (
         <div>
             <PartnerMainLayout>
-                <div>News</div>
+                <div>My links</div>
             </PartnerMainLayout>
         </div>
     );
 }
 
-export default News;
+export default MyLinksPage;

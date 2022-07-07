@@ -6,7 +6,7 @@ import PartnerProfileHeader from "../components/partner/profile/header";
 import Navigation from "../components/common/navigation/navigation";
 import EditProfile from "../components/partner/profile/edit-profile/EditProfile";
 
-function Profile() {
+function ProfilePage() {
     return (
         <div>
             <PartnerMainLayout>
@@ -24,4 +24,4 @@ function Profile() {
     );
 }
 
-export default Profile;
+export default ProfilePage;
