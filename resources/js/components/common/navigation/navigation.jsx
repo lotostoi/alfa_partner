@@ -1,4 +1,3 @@
-import { divide } from "lodash";
 import React from "react";
 import ReactDOM from "react-dom";
 import "./style.scss"

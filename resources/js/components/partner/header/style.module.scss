@@ -1,11 +1,12 @@
-.partner-header-wrapper {
+.partner-header {
     display: flex;
     width: 100%;
-    height: 64px;
     justify-content: flex-end;
+    align-items: center;
     padding: 20px 48px;
 
     .link {
+        text-decoration: none;
         display: flex;
         align-items: center;
         font-style: normal;
@@ -14,22 +15,28 @@
         line-height: 20px;
         color: #546272;
         margin-right: 20px;
+        text-transform: uppercase;
 
-        &.active {
+        &.active-default {
             color: red;
         }
 
-        &>.icon-news {
+        &>.info {
             margin-left: 4px;
             display: flex;
-            width: 24px;
-            height: 24px;
-            background: url('/assets/img/new-icon-default.png') no-repeat;
-            background-position: center;
-        }
-
-        &.active>.icon-news {
-            background: url('/assets/img/new-icon-active.png') no-repeat;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 153%;
+            letter-spacing: 1.25px;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            background: #EF3124;
         }
 
         &>.icon-profile {

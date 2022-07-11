@@ -29,7 +29,6 @@ function SubscribeComponent() {
             setCheckedUnSubscribed(false);
             setCheckedSubscribedOnlyMy(false);
         }
-    
     }, [checkedSubscribedAll]);
     useEffect(() => {
         if (checkedSubscribedOnlyMy) {
@@ -45,10 +44,7 @@ function SubscribeComponent() {
     }, [checkedUnSubscribed]);
 
     return (
-        <div
-            className="bg-light p-4"
-            style={{ maxWidth: 900, borderRadius: 12 }}
-        >
+        <div className="p-4 mt-4 border" style={{ borderRadius: 12 }}>
             <p>Email рассылка</p>
             <div className="d-flex flex-column">
                 <Radio

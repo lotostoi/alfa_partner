@@ -1,13 +1,7 @@
-import PartnerMainLayout from "../layouts/partner/partner-main-layout";
+import PageLayout from "../layouts/partner/page-layout";
 
-function OrdersPage() {
-    return (
-        <div>
-            <PartnerMainLayout>
-                <div>Orders</div>
-            </PartnerMainLayout>
-        </div>
-    );
+function OrdersPage(props) {
+    return <PageLayout {...props} />;
 }
 
 export default OrdersPage;

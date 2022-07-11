@@ -1,5 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import "./style.scss";
 
 import { ModalDesktop } from "@alfalab/core-components/modal/desktop";

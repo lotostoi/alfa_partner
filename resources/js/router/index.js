@@ -1,11 +1,20 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import RoutesMap from "./routesMap";
 
 import MainPage from "../pages/MainPage";
 import ReportsPage from "../pages/ReportsPage";
-import OrdersPage from "../pages/ReportsPage";
+import Orders from "../pages/orders";
+import OrdersList from "../pages/orders/orders-list";
+import Fines from "../pages/orders/fines";
+import Blockings from "../pages/orders/blockings";
+import RateHistory from "../pages/orders/rate-history";
+
 import PaymentsPage from "../pages/PaymentsPage";
-import ProfilePage from "../pages/ProfilePage";
+import Profile from "../pages/profile";
+import PersonalInfo from "../pages/profile/personal-info";
+import PersonalPayments from "../pages/profile/payments/index";
+
 import NewsPage from "../pages/NewsPage";
 import SupportPage from "../pages/SupportPage";
 
@@ -15,12 +24,12 @@ const routeList = [
      */
     {
         name: "main",
-        path: "/",
+        path: "/main",
         component: <MainPage />,
-        exact: true,
         location: "menu",
         text: "Главная",
         type: "route",
+        imgIcon: "home-icon.svg",
     },
     {
         name: "titleStatistic",
@@ -30,56 +39,64 @@ const routeList = [
     },
     {
         name: "reports",
-        path: "/reports",
+        path: "reports",
         component: <ReportsPage />,
-        exact: true,
         location: "menu",
         text: "Отчеты",
         type: "route",
+        imgIcon: "reports-icon.svg",
     },
     {
         name: "orders",
-        path: "/orders/",
-        component: <OrdersPage />,
-        exact: true,
+        path: "orders/",
+        component: <Orders />,
         location: "menu",
         text: "Заявки",
         type: "route",
+        imgIcon: "orders-icon.svg",
         childeRoutes: [
             {
                 name: "orders-list",
-                path: "list",
-                component: <OrdersPage />,
-                exact: true,
+                path: "orders-list",
+                component: <OrdersList />,
                 location: "menu",
+                text: "Список заявок",
                 index: true,
             },
             {
-                name: "orders-list",
-                path: "list",
-                component: <OrdersPage />,
-                exact: true,
+                name: "fines",
+                path: "fines",
+                component: <Fines />,
                 location: "menu",
+                text: "Штрафы и доплаты",
                 index: false,
             },
             {
-                name: "orders-list",
-                path: "list",
-                component: <OrdersPage />,
-                exact: true,
+                name: "blockings",
+                path: "blockings",
+                component: <Blockings />,
                 location: "menu",
+                text: "Блокировки",
+                index: false,
+            },
+            {
+                name: "rate-history",
+                path: "rate-history",
+                component: <RateHistory />,
+                location: "menu",
+                text: "История ставок",
                 index: false,
             },
         ],
     },
     {
         name: "payments",
-        path: "/payments",
+        path: "payments",
         component: <PaymentsPage />,
-        exact: true,
         location: "menu",
-        text: "Отчеты",
+        text: "Платежи",
         type: "route",
+        imgIcon: "payments-icon.svg",
     },
     {
         name: "titleOffers",
@@ -89,52 +106,67 @@ const routeList = [
     },
     {
         name: "offers",
-        path: "/offers",
+        path: "offers",
         component: <PaymentsPage />,
-        exact: true,
         location: "menu",
         text: "Офферы",
         type: "route",
+        imgIcon: "offers-icon.svg",
     },
     {
         name: "myLinks",
-        path: "/my-links",
+        path: "my-links",
         component: <PaymentsPage />,
-        exact: true,
         location: "menu",
         text: "Moи ссылки",
         type: "route",
+        imgIcon: "links-icon.svg",
     },
 
     /**
      * Routs for header
      */
     {
+        name: "support",
+        path: "support",
+        component: <SupportPage />,
+        location: "header",
+        text: "Поддержка",
+        type: "route",
+    },
+    {
         name: "news",
-        path: "/news",
+        path: "news",
         component: <NewsPage />,
-        exact: true,
         location: "header",
         text: "Новости",
         type: "route",
     },
     {
         name: "profile",
-        path: "/profile",
-        component: <ProfilePage />,
-        exact: true,
+        path: "profile/",
+        component: <Profile />,
         location: "header",
-        text: "профиль",
+        text: "Мой профиль",
         type: "route",
-    },
-    {
-        name: "support",
-        path: "/support",
-        component: <SupportPage />,
-        exact: true,
-        location: "header",
-        text: "Поддержка",
-        type: "route",
+        childeRoutes: [
+            {
+                name: "personal-info",
+                path: "personal-info",
+                component: <PersonalInfo />,
+                location: "header",
+                text: "Персональная информация",
+                index: true,
+            },
+            {
+                name: "payment",
+                path: "payment",
+                component: <PersonalPayments />,
+                location: "header",
+                text: "Оплата",
+                index: false,
+            },
+        ],
     },
 ];
 
@@ -142,17 +174,39 @@ const onlyRoutes = routeList.filter(({ type }) => type === "route");
 
 const menuRoutes = routeList.filter(({ location }) => location === "menu");
 
-const routesMap = (key) => {
-    const map = new Map();
-    onlyRoutes.forEach((rout) => map.set(rout.name, rout.path));
-    if (map.has(key)) {
-        return map.get(key);
+const headerRoutes = routeList.filter(({ location }) => location === "header");
+
+const { getUrlByKey, getUrlByShortKey } = new RoutesMap(onlyRoutes);
+
+export const routes = onlyRoutes.map((rout) => {
+    if ("childeRoutes" in rout) {
+        return (
+            <Route
+                path={rout.path}
+                key={rout.name}
+                element={React.cloneElement(rout.component, { ...rout })}
+            >
+                {rout.childeRoutes.map((childRoute) => {
+                    return (
+                        <Route
+                            index
+                            path={childRoute.path}
+                            key={childRoute.name}
+                            element={childRoute.component}
+                        />
+                    );
+                })}
+            </Route>
+        );
+    } else {
+        return (
+            <Route
+                path={rout.path}
+                key={rout.name}
+                element={React.cloneElement(rout.component, { ...rout })}
+            />
+        );
     }
-    throw new Error(`Rout with name --${key}-- not found!!!`);
-};
+});
 
-export const routes = onlyRoutes.map((rout) => (
-    <Route path={rout.path} key="{rout.path}" element={rout.component} />
-));
-
-export { menuRoutes, routesMap };
+export { menuRoutes, headerRoutes, getUrlByKey, getUrlByShortKey };

@@ -13,5 +13,8 @@ const mix = require("laravel-mix");
 
 mix.js("resources/js/app.js", "public/js")
     .alias({ "@": "resources/js" })
+    .alias({ "@l": "resources/js/layouts" })
+    .alias({ "@c": "resources/js/components" })
     .react()
+    .sourceMaps()
     .sass("resources/sass/app.scss", "public/css");

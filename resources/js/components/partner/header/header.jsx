@@ -1,35 +1,39 @@
-import "./partner-header-wrapper.scss";
+import style from "./style.module.scss";
 
-import { NavLink } from "react-router-dom";
-import { routesMap } from "@/router";
+import HeaderLink from "./components/header-link";
+import ProfileLink from "./components/profile-link";
+import { getUrlByKey } from "@/router";
 
-function PartnerHeaderWrapper() {
+function PartnerHeader() {
     return (
-        <div className="partner-header-wrapper">
-            <NavLink to="/promo_code" className="text-decoration-none link">
-                1000А
-            </NavLink>
-            <NavLink
-                to={routesMap("support")}
-                className="text-decoration-none link"
+        <div className={style["partner-header"]}>
+            <HeaderLink
+                to={getUrlByKey("support")}
+                className={({ isActive }) =>
+                    isActive
+                        ? style["active-default"] + " " + style.link
+                        : style.link
+                }
             >
-                Поддержка
-            </NavLink>
-            <NavLink
-                to={routesMap("news")}
-                className="text-decoration-none link"
+                <span>Поддержка</span>
+                <span className={style.info}>9+</span>
+            </HeaderLink>
+            <HeaderLink
+                to={getUrlByKey("news")}
+                className={({ isActive }) =>
+                    isActive
+                        ? style["active-default"] + " " + style.link
+                        : style.link
+                }
             >
                 <span>Новости</span>
-                <span className="icon-news"></span>
-            </NavLink>
-            <NavLink
-                to={routesMap("profile")}
-                className="text-decoration-none link"
-            >
+                <span className={style.info}>2</span>
+            </HeaderLink>
+            <ProfileLink to={getUrlByKey("profile")} className={style.link}>
                 <span className="icon-profile"></span>
-            </NavLink>
+            </ProfileLink>
         </div>
     );
 }
 
-export default PartnerHeaderWrapper;
+export default PartnerHeader;

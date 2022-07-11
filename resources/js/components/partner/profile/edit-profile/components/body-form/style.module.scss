@@ -1,0 +1,31 @@
+.body-form {
+    padding: 36px;
+    border: 1px solid #DBDEE1;
+    border-radius: 12px;
+    width: 100%;
+
+    .links {
+        margin-top: 20px;
+        margin-bottom: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+
+        &>.link {
+            cursor: pointer;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            display: flex;
+            align-items: center;
+            color: #EF3124;
+            margin-right: 16px;
+            text-decoration: none;
+
+            &:hover {
+                color: darken(#EF3124, 10%);
+            }
+        }
+    }
+}
