@@ -179,7 +179,7 @@ export default function () {
                         size="xs"
                         className={style.button_theme_light_bordered}
                     >
-                        15 ссылок
+                        44 637 заявок с 01.01.2022 по 24.02.2022 на сумму 19 587 000 ₽
                         <span className={style.divider}> | </span>
                     </Button>
 
