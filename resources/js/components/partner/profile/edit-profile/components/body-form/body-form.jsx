@@ -1,6 +1,8 @@
 import { Input } from "@alfalab/core-components/input";
 import { Select } from "@alfalab/core-components/select";
 
+import ChangePassword from "../modals/change-passowrd";
+
 import style from "./style.module.scss";
 
 const options = [
@@ -44,7 +46,7 @@ export default function () {
             </div>
             <div className={style.links}>
                 <a className={style.link}>Удалить аккаунт</a>
-                <a className={style.link}>Изменить пароль</a>
+                <ChangePassword />
                 <a className={style.link}>Изменить Email</a>
             </div>
         </div>

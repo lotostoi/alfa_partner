@@ -1,10 +1,11 @@
-import "./style.scss";
-
+import React from "react";
 import { ModalDesktop } from "@alfalab/core-components/modal/desktop";
 import { CrossMIcon } from "@alfalab/icons-glyph/CrossMIcon";
 import { IconButton } from "@alfalab/core-components/icon-button";
 import { Button } from "@alfalab/core-components/button";
 import { Typography } from "@alfalab/core-components/typography";
+
+import style from "./style.module.scss";
 
 function ModalSaveChangesProfile() {
     const [open, setOpen] = React.useState(false);
@@ -20,14 +21,9 @@ function ModalSaveChangesProfile() {
             >
                 Сохранить
             </Button>
-            <ModalDesktop
-                open={open}
-                onClose={handleModalOpen}
-                size="s"
-                className="modal-wrapper"
-            >
-                <div className="header-wrapper-modal">
-                    <Typography.Text tag="p" className="mb-0 header-text">
+            <ModalDesktop open={open} onClose={handleModalOpen} size="s" className={style.wrapper}>
+                <div className={style.header_wrapper_modal}>
+                    <Typography.Text tag="p" className={style.title}>
                         Сохранить изменения
                     </Typography.Text>
                     <IconButton
@@ -39,32 +35,17 @@ function ModalSaveChangesProfile() {
                     />
                 </div>
 
-                <ModalDesktop.Content>
-                    <Typography.Text
-                        tag="p"
-                        className="mb-0 content-modal-text"
-                    >
-                        Вы уверенны, что хотите покинуть
-                    </Typography.Text>
-
-                    <Typography.Text
-                        tag="p"
-                        className="mb-0 content-modal-text"
-                    >
-                        страницу без сохранения
-                    </Typography.Text>
-                    <Typography.Text
-                        tag="p"
-                        className="mb-0 content-modal-text"
-                    >
+                <ModalDesktop.Content className={style.content_wrapper_modal}>
+                    <Typography.Text tag="p" className={style.content}>
+                        Вы уверенны, что хотите покинуть страницу без сохранения
                         изменений
                     </Typography.Text>
                 </ModalDesktop.Content>
-                <div className="header-footer-modal">
-                    <Button view="secondary" style={{ width: 188 }}>
+                <div className={style.footer_wrapper_modal}>
+                    <Button view="secondary" style={{ width: 199 }}>
                         Не сохранять
                     </Button>
-                    <Button view="primary" style={{ width: 188 }}>
+                    <Button view="primary" style={{ width: 199 }}>
                         Сохранить
                     </Button>
                 </div>

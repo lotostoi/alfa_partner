@@ -1,0 +1,36 @@
+.input_wrapper {
+    width: 100%;
+
+    &>.message {
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        
+        &>.danish_letters,
+        &>.numbers,
+        &>.length {
+            display: flex;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 11px;
+            line-height: 16px;
+            margin-right: 8px;
+
+            &.success {
+                color: #13A463;
+                background: rgba(19, 164, 99, 0.1);
+            }
+
+            &.error {
+                background: rgba(217, 29, 11, 0.1);
+                color: #D91D0B;
+            }
+        }
+
+    }
+
+
+}
