@@ -22,7 +22,7 @@ export default function (props) {
 
     useEffect(() => {
         setIsRepeatPassword(value === props["new-password"]);
-        props.isValid(value === props["new-password"]);
+        props.isValid(value !== props["new-password"]);
     }, [value, props["new-password"]]);
 
     return (

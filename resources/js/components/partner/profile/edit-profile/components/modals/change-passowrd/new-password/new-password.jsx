@@ -10,7 +10,7 @@ export default function (props) {
     const [isDanishLetters, setIsDanishLetters] = useState(false);
     const [isNumbers, setIsNumbers] = useState(false);
     const [isLength, setIsLength] = useState(false);
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState("");
 
     const onChangeHandler = (e) => {
         const value = e.target.value;
@@ -23,15 +23,15 @@ export default function (props) {
             setStartValid(true);
         }
 
-        /[A-Za-z]/.test(value)
-            ? setIsDanishLetters(true)
-            : setIsDanishLetters(false);
+        const _isDanishLetters = /[A-Za-z]/.test(value);
+        const _isNumbers = /[0-9]/.test(value);
+        const _isLength = value.length >= 8;
 
-        /[0-9]/.test(value) ? setIsNumbers(true) : setIsNumbers(false);
+        setIsDanishLetters(_isDanishLetters);
+        setIsNumbers(_isNumbers);
+        setIsLength(_isLength);
 
-        value.length >= 8 ? setIsLength(true) : setIsLength(false);
-
-        props.isValid(isDanishLetters && isNumbers && isLength);
+        props.isValid(_isDanishLetters && _isNumbers && _isLength);
     };
 
     return (

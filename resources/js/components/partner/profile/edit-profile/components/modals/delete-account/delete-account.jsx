@@ -5,39 +5,22 @@ import { IconButton } from "@alfalab/core-components/icon-button";
 import { Button } from "@alfalab/core-components/button";
 import { Typography } from "@alfalab/core-components/typography";
 import { PasswordInput } from "@alfalab/core-components/password-input";
-import NewPassword from "./new-password";
-import RepeatPassword from "./repeate-password";
 
 import style from "./style.module.scss";
-import { useEffect } from "react";
 
 function ModalSaveChangesProfile() {
+    const [passwordVisible, setPasswordVisible] = useState(false);
     const [open, setOpen] = useState(false);
-
-    const [oldPasswordVisible, setOldPasswordVisible] = useState(false);
-
-    const [newPassword, setNewPassword] = useState(null);
-    const [newPasswordIsValid, setNewPasswordIsValid] = useState(false);
-
-    const [newRepeatPassword, setRepeatPassword] = useState(null);
-    const [newRepeatPasswordIsValid, setRepeatPasswordIsValid] =
-        useState(false);
-
-    const [isDisabled, setIsDisabled] = useState(false);
 
     const handleModalOpen = (e) => {
         e.preventDefault();
         setOpen(!open);
     };
 
-    useEffect(() => {
-        setIsDisabled(newRepeatPasswordIsValid || !newPasswordIsValid);
-    }, [newPasswordIsValid, newRepeatPasswordIsValid]);
-
     return (
         <>
             <a href="" onClick={handleModalOpen} className={style.show_modal}>
-                Изменить пароль
+                Удалить аккаунт
             </a>
             <ModalDesktop
                 open={open}
@@ -47,7 +30,7 @@ function ModalSaveChangesProfile() {
             >
                 <div className={style.header}>
                     <Typography.Text tag="p" className={style.title}>
-                        Изменить пароль
+                        Удалить аккаунт
                     </Typography.Text>
                     <IconButton
                         view="primary"
@@ -59,28 +42,19 @@ function ModalSaveChangesProfile() {
                 </div>
 
                 <ModalDesktop.Content className={style.content}>
+                    <p className={style.text}>
+                        Вы действительно хотите удалить аккаунт?
+                        <br /> При удалении аккаунта все данные будут
+                        <br /> потеряны.
+                    </p>
                     <PasswordInput
                         block
-                        label="Старый пароль"
-                        passwordVisible={oldPasswordVisible}
+                        label="Пароль"
+                        passwordVisible={passwordVisible}
                         onPasswordVisibleChange={(visible) => {
-                            setOldPasswordVisible(visible);
+                            setPasswordVisible(visible);
                         }}
-                    />
-
-                    <span className={style.sub_title}>Восстановить пароль</span>
-
-                    <NewPassword
-                        className="mb-3 w-100"
-                        value={setNewPassword}
-                        isValid={setNewPasswordIsValid}
-                    />
-
-                    <RepeatPassword
-                        new-password={newPassword}
-                        className="mb-3 w-100"
-                        value={setRepeatPassword}
-                        isValid={setRepeatPasswordIsValid}
+                        hint="Для удаления аккаунта необходимо ввести пароль"
                     />
                 </ModalDesktop.Content>
 
@@ -88,12 +62,8 @@ function ModalSaveChangesProfile() {
                     <Button view="secondary" className={style.btn}>
                         Отменить
                     </Button>
-                    <Button
-                        view="primary"
-                        className={style.btn}
-                        disabled={isDisabled}
-                    >
-                        Сохранить
+                    <Button view="primary" className={style.btn}>
+                        Удалить
                     </Button>
                 </div>
             </ModalDesktop>

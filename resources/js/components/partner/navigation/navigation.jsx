@@ -6,11 +6,12 @@ import { NavLink } from "react-router-dom";
 
 import MainLink from "./components/main-link";
 
-function PartnerNavigationWrapper() {
+function PartnerNavigationWrapper({ setIsShow }) {
     const [isClose, _toggleMenu] = useState(false);
 
     const handlerToggleMenu = () => {
         _toggleMenu(!isClose);
+        setIsShow(isClose);
     };
 
     return (

@@ -1,7 +1,6 @@
 import { login } from "../../../api/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function () {
     const [email, setEmail] = useState();
@@ -68,7 +67,7 @@ export default function () {
                     <span>Войти</span>
                     {isLoad ? (
                         <div
-                            class="spinner-grow spinner-grow-sm ms-1"
+                            className="spinner-grow spinner-grow-sm ms-1"
                             role="status"
                         ></div>
                     ) : null}

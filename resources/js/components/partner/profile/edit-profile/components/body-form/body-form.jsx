@@ -1,6 +1,7 @@
 import { Input } from "@alfalab/core-components/input";
 import { Select } from "@alfalab/core-components/select";
 
+import DeleteAccount from "../modals/delete-account";
 import ChangePassword from "../modals/change-passowrd";
 
 import style from "./style.module.scss";
@@ -45,7 +46,7 @@ export default function () {
                 </div>
             </div>
             <div className={style.links}>
-                <a className={style.link}>Удалить аккаунт</a>
+                <DeleteAccount />
                 <ChangePassword />
                 <a className={style.link}>Изменить Email</a>
             </div>
