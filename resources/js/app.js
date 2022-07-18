@@ -15,7 +15,14 @@ require("./bootstrap");
 import React from "react";
 import ReactDom from "react-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './app.scss'
-import App from "./App.jsx";
+import './app.scss';
+import App from './App.jsx';
+import {Provider} from 'react-redux';
+import {store} from './store/store';
 
-ReactDom.render(<App />, document.querySelector("#root"));
+
+ReactDom.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+    , document.querySelector("#root"));

@@ -1,0 +1,17 @@
+@import "../../mixins.scss";
+
+.main_layout {
+    position: relative;
+}
+
+.main_layout_filter {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 296px;
+    z-index: 10;
+    box-shadow: 0px 4px 50px rgba(34, 34, 34, 0.1);
+    overflow-y: scroll;
+}
+
