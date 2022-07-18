@@ -32,8 +32,13 @@ class SanctumLoginController extends Controller
         return  Auth::logout();
     }
 
-    public function isLogin(Request $request)
+    public function isLogin()
     {
         return response()->json((bool) auth()->user());
+    }
+
+    public function getUser()
+    {
+        return response()->json((bool) auth()->user() ? auth()->user() : null);
     }
 }

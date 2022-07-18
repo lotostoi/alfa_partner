@@ -15,12 +15,14 @@ import { routes } from "./router";
 
 import { isAuth } from "./api/auth";
 
-import PartnerMainLayout from "@l/partner/partner-main-layout.js";
+import PartnerMainLayout from "@l/partner/partner-main-layout.jsx";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 function App() {
     useEffect(async () => {
         const to = await isAuth();
-        
+
         if (history.location.pathname !== "/login" && typeof to === "string") {
             history.push(to);
         }
@@ -35,14 +37,16 @@ function App() {
             className="container p-0"
             style={{ maxWidth: 1440, borderRight: "1px solid #ece9e94a" }}
         >
-            <HistoryRouter history={history}>
-                <Routes>
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/" element={<PartnerMainLayout />}>
-                        {routes}
-                    </Route>
-                </Routes>
-            </HistoryRouter>
+            <Provider store={store}>
+                <HistoryRouter history={history}>
+                    <Routes>
+                        <Route path="/login" element={<LoginPage />} />
+                        <Route path="/" element={<PartnerMainLayout />}>
+                            {routes}
+                        </Route>
+                    </Routes>
+                </HistoryRouter>
+            </Provider>
         </div>
     );
 }

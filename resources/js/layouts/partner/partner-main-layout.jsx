@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 
 import PartnerNavigation from "../../components/partner/navigation/navigation";
 import PartnerHeader from "../../components/partner/header";
 
 function PartnerMainLayout() {
+    
     const [isShow, setIsShow] = useState(true);
 
     return (

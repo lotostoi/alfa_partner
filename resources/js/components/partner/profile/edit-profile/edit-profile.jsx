@@ -5,6 +5,7 @@ import SubscribeComponent from "./components/body-form/subscribe";
 import { useNavigate } from "react-router-dom";
 
 import { logout } from "@/api/auth";
+import { useGetUserQuery } from "../../../../store/user/user.api";
 
 function EditProfile() {
     const navigate = useNavigate();
