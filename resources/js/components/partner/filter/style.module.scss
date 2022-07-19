@@ -1,0 +1,60 @@
+@import "../../../mixins.scss";
+
+.filter {
+    padding: 20px;
+    padding-top: 44px;
+    background-color: $color-white;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.filter_top_group {
+    display: flex;
+}
+
+.filter_title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+}
+
+.filter_close {
+    margin-left: auto;
+    cursor: pointer;
+    position: relative;
+
+    &::after {
+        content: '+';
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        font-size: 24px;
+        transform: rotate(45deg);
+    }
+}
+
+.filter_inputs {
+    flex-grow: 1;
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.filter_btns {
+    padding-top: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid $color-second-main-bg;
+}
+
+
+.calendar_range_label {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: $color-text-second;
+}
