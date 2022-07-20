@@ -1,4 +1,4 @@
-import Fines from "../../../components/partner/fines";
+import Fines from "../../../components/partner/orders/fines";
 
 export default function () {
     return (

@@ -1,4 +1,4 @@
-import RateHistory from "../../../components/partner/rate-history";
+import RateHistory from "../../../components/partner/orders/rate-history";
 
 export default function () {
 

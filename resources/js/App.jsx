@@ -37,16 +37,14 @@ function App() {
             className="container p-0"
             style={{ maxWidth: 1440, borderRight: "1px solid #ece9e94a" }}
         >
-            <Provider store={store}>
-                <HistoryRouter history={history}>
-                    <Routes>
-                        <Route path="/login" element={<LoginPage />} />
-                        <Route path="/" element={<PartnerMainLayout />}>
-                            {routes}
-                        </Route>
-                    </Routes>
-                </HistoryRouter>
-            </Provider>
+            <HistoryRouter history={history}>
+                <Routes>
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/" element={<PartnerMainLayout />}>
+                        {routes}
+                    </Route>
+                </Routes>
+            </HistoryRouter>
         </div>
     );
 }

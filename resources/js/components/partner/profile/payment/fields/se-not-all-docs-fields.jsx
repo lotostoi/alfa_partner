@@ -4,36 +4,60 @@ import { Input } from "@alfalab/core-components/input";
 import { Select } from "@alfalab/core-components/select";
 import { Button } from "@alfalab/core-components/button";
 
-const options = [
+const dealForm = [
     { key: "se", content: "Самозанятость" },
     { key: "fl", content: "Физическое лицо" },
     { key: "ul", content: "Юридическое лицо (ООО)" },
     { key: "ip", content: "Индивидуальный предприниматель" },
 ];
 
-export default function ({ email, onboardingUserType }) {
+const taxation = [
+    { key: "osno", content: "ОСНО - плачу все налоги (НЖС, НФДЛ)" },
+    { key: "ysn", content: "УСН - плачу все налоги (НЖС, НФДЛ)" },
+];
+
+export default function ({ email, onboardingUserType, setOnboardingUserType }) {
     return (
         <>
             <div className={style.wrapper_fields}>
                 <div className="col-12 col-lg-6" style={{ padding: "0 10px" }}>
                     <Select
-                        options={options}
+                        options={dealForm}
                         label="Форма сотрудничества"
                         placeholder="Форма сотрудничества"
                         block
                         selected={
-                            options.find(
+                            dealForm.find(
                                 ({ key }) => key === onboardingUserType
                             )?.key
                         }
+                        onChange={(payload) =>
+                            setOnboardingUserType(payload.selected.key)
+                        }
                     />
-                    <Input
-                        label="Тип налогооблажения"
-                        name="taxation"
-                        value="НПД – плачу налоги как самозанятый"
-                        block
-                        className="mt-4"
-                    />
+                    {onboardingUserType != "fl" ? (
+                        onboardingUserType === "se" ? (
+                            <Input
+                                label="Тип налогооблажения"
+                                name="taxation"
+                                value="НПД – плачу налоги как самозанятый"
+                                block
+                                className="mt-4"
+                            />
+                        ) : (
+                            <Select
+                                options={taxation}
+                                label="Форма сотрудничества"
+                                placeholder="Форма сотрудничества"
+                                block
+                                className="mt-4"
+                                selected={
+                                    taxation.find(({ key }) => key === "osno")
+                                        ?.key
+                                }
+                            />
+                        )
+                    ) : null}
                 </div>
                 <div
                     className="col-12 col-lg-6 mt-4 mt-lg-0"
@@ -45,13 +69,15 @@ export default function ({ email, onboardingUserType }) {
                         value="1 месяц"
                         block
                     />
-                    <Input
-                        label="ФИО"
-                        name="full_name"
-                        value={email}
-                        block
-                        className="mt-4"
-                    />
+                    {onboardingUserType != "fl" ? (
+                        <Input
+                            label="ФИО"
+                            name="full_name"
+                            value={email}
+                            block
+                            className="mt-4"
+                        />
+                    ) : null}
                 </div>
             </div>
 

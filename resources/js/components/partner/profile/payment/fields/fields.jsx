@@ -1,36 +1,66 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import SeNotAllDocs from "./se-not-all-docs-fields";
+import FlNotAllDocs from "./fl-not-all-docs-fields";
 
 function Fields({ allDocs, onboardingUserType, email }) {
-    if (onboardingUserType === "se" && allDocs === 0) {
+    let [_onboardingUserType, setOnboardingUserType] =
+        useState(onboardingUserType);
+
+    useEffect(() => {
+        console.log(_onboardingUserType);
+    }, [_onboardingUserType]);
+
+    if (_onboardingUserType === "se" && allDocs === 0) {
         return (
             <SeNotAllDocs
                 email={email}
-                onboardingUserType={onboardingUserType}
+                onboardingUserType={_onboardingUserType}
+                setOnboardingUserType={setOnboardingUserType}
             />
         );
     }
-    if (onboardingUserType === "se" && allDocs === 1) {
+
+    if (_onboardingUserType === "se" && allDocs === 1) {
         return <>самозанятый и договор заключен</>;
     }
-    if (onboardingUserType === "fl" && allDocs === 0) {
-        return <>физическое лицо и договор не заключен</>;
+    if (_onboardingUserType === "fl" && allDocs === 0) {
+        return (
+            <FlNotAllDocs
+                email={email}
+                onboardingUserType={_onboardingUserType}
+                setOnboardingUserType={setOnboardingUserType}
+            />
+        );
     }
-    if (onboardingUserType === "fl" && allDocs === 1) {
+    if (_onboardingUserType === "fl" && allDocs === 1) {
         return <>физическое лицо и договор заключен</>;
     }
-    if (onboardingUserType === "ip" && allDocs === 0) {
-        return <>индивидуальный предприниматель и договор не заключен</>;
+    if (_onboardingUserType === "ip" && allDocs === 0) {
+        return (
+            <SeNotAllDocs
+                email={email}
+                onboardingUserType={_onboardingUserType}
+                setOnboardingUserType={setOnboardingUserType}
+            />
+        );
     }
-    if (onboardingUserType === "ip" && allDocs === 1) {
+    if (_onboardingUserType === "ip" && allDocs === 1) {
         return <>индивидуальный предприниматель и договор заключен</>;
     }
-    if (onboardingUserType === "ul" && allDocs === 0) {
-        return <>юридическое лицо и договор не заключен</>;
+    if (_onboardingUserType === "ul" && allDocs === 0) {
+        return (
+            <SeNotAllDocs
+                email={email}
+                onboardingUserType={_onboardingUserType}
+                setOnboardingUserType={setOnboardingUserType}
+            />
+        );
     }
-    if (onboardingUserType === "ul" && allDocs === 1) {
+    if (_onboardingUserType === "ul" && allDocs === 1) {
         return <>юридическое лицо и договор заключен</>;
     }
-    return <>не известный onboardingUserType</>;
+    return <>не известный _onboardingUserType</>;
 }
 
 export default Fields;
