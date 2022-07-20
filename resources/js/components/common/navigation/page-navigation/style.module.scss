@@ -6,6 +6,7 @@
     height: 36px;
     justify-content: flex-start;
     align-items: flex-start;
+    min-width: max-content;
 
     &>.link {
         text-decoration: none;

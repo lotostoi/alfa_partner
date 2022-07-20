@@ -131,6 +131,7 @@ const routeList = [
         path: "support",
         component: <SupportPage />,
         location: "header",
+        mobileLocation: "menu",
         text: "Поддержка",
         type: "route",
     },
@@ -139,6 +140,7 @@ const routeList = [
         path: "news",
         component: <NewsPage />,
         location: "header",
+        mobileLocation: "menu",
         text: "Новости",
         type: "route",
     },
@@ -172,7 +174,19 @@ const routeList = [
 
 const onlyRoutes = routeList.filter(({ type }) => type === "route");
 
-const menuRoutes = routeList.filter(({ location }) => location === "menu");
+const menuRoutes = (() => {
+    const onlyDesktop = routeList.filter(({ location }) => location === "menu");
+    const andMobile = routeList.filter(
+        ({ mobileLocation }) => mobileLocation === "menu"
+    );
+
+    const firstPart = [...onlyDesktop].splice(0, 1);
+    const lastPart = [...onlyDesktop].splice(1);
+    
+    return [...firstPart, ...andMobile, ...lastPart];
+})();
+
+console.log(menuRoutes);
 
 const headerRoutes = routeList.filter(({ location }) => location === "header");
 

@@ -1,0 +1,119 @@
+@import "@/mixins.scss";
+
+.wrapper {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    height: inherit;
+    width: 100%;
+    pointer-events: none;
+    background-color: transparent;
+
+
+    &.active {
+        background: rgba(15, 24, 43, 0.7);
+        width: 100%;
+        pointer-events: auto;
+    }
+
+    .partner_nav {
+        transform: translate(-100%);
+        width: 254px;
+        transition: transform 0.7s, width .5s;
+        padding: 0 16px;
+
+        &.active {
+            transition: transform 0.7s;
+            transform: translate(0);
+        }
+
+        @include tablets() {
+            margin-top: 0;
+            transform: translate(0);
+            margin-left: 0;
+            padding: 0 22px;
+            width: 278px;
+
+            &.close {
+                width: 86px;
+            }
+        }
+
+        background: rgba(26, 48, 75, 1);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        height: 100%;
+        box-sizing: border-box;
+        z-index: 10;
+        overflow-x: hidden;
+
+        & .logo {
+            display: none;
+
+            @include tablets() {
+                display: flex;
+            }
+
+            width: initial;
+            margin-top: 32px;
+            height: 36px;
+
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+
+            &>img {
+                height: 100%;
+                transform: scale(2.5);
+            }
+        }
+
+        nav {
+            margin-top: 24px;
+
+            @include tablets() {
+                margin-top: 61px;
+            }
+        }
+
+    }
+
+    @include tablets() {
+        position: relative;
+        width: max-content;
+        display: block;
+        pointer-events: auto;
+        overflow-x: visible;
+        z-index: 1;
+
+        .btn_show_close {
+            cursor: pointer;
+            box-sizing: border-box;
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            right: -14px;
+            top: 32px;
+            z-index: 200;
+
+            background: #FFFFFF;
+            border: 1px solid #B6BCC3;
+            background-image: url('/assets/img/partner/menu/arrow.svg');
+            background-repeat: no-repeat;
+            background-position: 41% center;
+            border-radius: 999px;
+            transition: transform .5s;
+        }
+
+        &.close {
+            .btn_show_close {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+}

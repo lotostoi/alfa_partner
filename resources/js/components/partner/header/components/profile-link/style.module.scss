@@ -1,4 +1,7 @@
+@import "@/mixins";
+
 .profile-link {
+
     box-sizing: border-box;
     min-width: 165px;
     height: 48px;
@@ -10,6 +13,17 @@
     align-items: center;
     text-decoration: none;
     padding: 0 18px;
+
+    &.isMenu {
+        display: flex;
+        border: 1px solid white;
+    }
+
+    @include tablets() {
+        &.isMenu {
+            display: none !important;
+        }
+    }
 
     &.active {
         border: 1px solid #c43131;
@@ -30,6 +44,10 @@
             letter-spacing: 1.25px;
             text-transform: uppercase;
             color: #0C2034;
+
+            &.isMenu {
+                color: white;
+            }
         }
 
         &>.id {
@@ -40,16 +58,20 @@
             letter-spacing: 1.25px;
             text-transform: uppercase;
             color: #546272;
+
+            &.isMenu {
+                color: white;
+            }
         }
     }
 
     .icon {
+        color: #546272;
         margin-left: auto;
-        width: 19px;
-        height: 20px;
-        background-image: url('/assets/img/partner/header/icon-profile-link.svg');
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: contain;
+        font-size: 12px;
+
+        &.isMenu {
+            color: white;
+        }
     }
 }

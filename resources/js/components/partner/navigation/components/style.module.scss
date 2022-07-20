@@ -1,3 +1,5 @@
+@import "@/mixins";
+
 .nav-link {
     &>.parent {
         text-decoration: none;
@@ -15,6 +17,12 @@
         border-radius: 20px;
         min-width: 207px;
 
+        &.onlyMobile {
+            @include tablets() {
+                display: none;
+            }
+        }
+
         &.active {
             background: rgba(59, 82, 108, 1);
         }
@@ -28,6 +36,12 @@
         }
 
         .icon {
+            display: none;
+
+            @include tablets() {
+                display: block;
+            }
+
             min-width: 19px;
             min-height: 19px;
             background-image: url('/assets/img/partner/menu/home-icon.svg');
@@ -103,7 +117,9 @@
     }
 
     .parent.active~.child-links {
-        display: flex;
+        @include tablets() {
+            display: flex;
+        }
     }
 
     &.close {

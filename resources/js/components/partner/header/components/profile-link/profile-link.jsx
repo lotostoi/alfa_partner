@@ -3,7 +3,9 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { getUrlByKey, headerRoutes } from "@/router";
 import style from "./style.module.scss";
 
-function ProfileLink() {
+import { NavigationProfileMIcon } from "@alfalab/icons-glyph/NavigationProfileMIcon";
+
+function ProfileLink({ isMenu }) {
     const { childeRoutes, path } = headerRoutes.find(
         ({ name }) => name === "profile"
     );
@@ -17,22 +19,40 @@ function ProfileLink() {
         }
     }, [pathname]);
 
-    const isActive = pathname.startsWith("/" + path);
-
     return (
         <NavLink
             to={getUrlByKey("profile")}
             className={
-                isActive
-                    ? style["profile-link"] + " " + style.active
+                isMenu
+                    ? [style["profile-link"], style.isMenu].join(" ")
                     : style["profile-link"]
             }
         >
             <div className={style.content}>
-                <span className={style.name}>ivanivanov</span>
-                <span className={style.id}>ID:74117</span>
+                <span
+                    className={
+                        isMenu
+                            ? [style.name, style.isMenu].join(" ")
+                            : style.name
+                    }
+                >
+                    ivanivanov
+                </span>
+                <span
+                    className={
+                        isMenu ? [style.id, style.isMenu].join(" ") : style.id
+                    }
+                >
+                    ID:74117
+                </span>
             </div>
-            <div className={style.icon}></div>
+            <div
+                className={
+                    isMenu ? [style.icon, style.isMenu].join(" ") : style.icon
+                }
+            >
+                <NavigationProfileMIcon />
+            </div>
         </NavLink>
     );
 }

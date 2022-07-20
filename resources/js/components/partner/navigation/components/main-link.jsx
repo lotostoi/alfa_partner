@@ -3,6 +3,7 @@ import { getUrlByKey } from "@/router";
 import { useEffect, useRef } from "react";
 
 import style from "./style.module.scss";
+import { useState } from "react";
 
 function MainLink({ link, isClose }) {
     const { childeRoutes, type, name, text } = link;
@@ -79,15 +80,28 @@ function MainLink({ link, isClose }) {
     );
 }
 
-function TopLink({ name, text, isActive, imgIcon }) {
+function TopLink({ name, text, isActive, imgIcon, mobileLocation }) {
+    const [fullWrapperClass, setFullWrapperClass] = useState("");
+
+    const wrapperClass = [
+        style.parent,
+        mobileLocation ? style.onlyMobile : "",
+    ].join(" ");
+
+    const wrapperClassActive = [
+        style.parent,
+        mobileLocation ? style.onlyMobile : "",
+        style.active,
+    ].join(" ");
+
+    useEffect(() => {
+        isActive
+            ? setFullWrapperClass(wrapperClassActive)
+            : setFullWrapperClass(wrapperClass);
+    }, [isActive, mobileLocation]);
+
     return (
-        <NavLink
-            to={getUrlByKey(name)}
-            className={
-                isActive ? style.active + " " + style.parent : style.parent
-            }
-            key={name}
-        >
+        <NavLink to={getUrlByKey(name)} className={fullWrapperClass} key={name}>
             <span
                 className={style.icon}
                 style={

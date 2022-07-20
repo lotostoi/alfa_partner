@@ -16,8 +16,7 @@ import { routes } from "./router";
 import { isAuth } from "./api/auth";
 
 import PartnerMainLayout from "@l/partner/partner-main-layout.jsx";
-import { Provider } from "react-redux";
-import { store } from "./store";
+
 
 function App() {
     useEffect(async () => {
@@ -34,8 +33,7 @@ function App() {
 
     return (
         <div
-            className="container p-0"
-            style={{ maxWidth: 1440, borderRight: "1px solid #ece9e94a" }}
+            className="w-100 p-0"
         >
             <HistoryRouter history={history}>
                 <Routes>

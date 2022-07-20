@@ -1,55 +1,91 @@
+@import "@/mixins";
+
+
 .partner-header {
-    display: flex;
     width: 100%;
-    justify-content: flex-end;
+    display: flex;
     align-items: center;
-    padding: 20px 48px;
 
-    .link {
-        text-decoration: none;
+    height: 58px;
+    background-color: $color-dark-main-bg;
+
+    .mobile {
+        justify-content: flex-start;
+        width: 100%;
         display: flex;
-        align-items: center;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 20px;
-        color: #546272;
-        margin-right: 20px;
-        text-transform: uppercase;
+    }
 
-        &.active-default {
-            color: red;
+    .desktop {
+        justify-content: flex-end;
+        width: 100%;
+        display: none;
+    }
+
+    .btn_burger {
+        color: white;      
+    }
+
+    @include tablets() {
+
+        .mobile {
+            display: none;
         }
 
-        &>.info {
-            margin-left: 4px;
+        .desktop {
             display: flex;
-            justify-content: center;
+        }
+
+        background-color: transparent;
+        justify-content: flex-end;
+        padding: 20px 48px;
+
+
+        .link {
+            text-decoration: none;
+            display: flex;
             align-items: center;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
             font-style: normal;
             font-weight: 500;
-            font-size: 10px;
-            line-height: 153%;
-            letter-spacing: 1.25px;
+            font-size: 14px;
+            line-height: 20px;
+            color: #546272;
+            margin-right: 20px;
             text-transform: uppercase;
-            color: #FFFFFF;
-            background: #EF3124;
-        }
 
-        &>.icon-profile {
-            margin-left: 4px;
-            display: flex;
-            width: 24px;
-            height: 24px;
-            background: url('/assets/img/pp-profile-default.png') no-repeat;
-            background-position: center;
-        }
+            &.active_default {
+                color: red;
+            }
 
-        &.active>.icon-profile {
-            background: url('/assets/img/pp-profile-active.png') no-repeat;
+            &>.info {
+                margin-left: 4px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                width: 18px;
+                height: 18px;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 10px;
+                line-height: 153%;
+                letter-spacing: 1.25px;
+                text-transform: uppercase;
+                color: #FFFFFF;
+                background: #EF3124;
+            }
+
+            &>.icon-profile {
+                margin-left: 4px;
+                display: flex;
+                width: 24px;
+                height: 24px;
+                background: url('/assets/img/pp-profile-default.png') no-repeat;
+                background-position: center;
+            }
+
+            &.active>.icon-profile {
+                background: url('/assets/img/pp-profile-active.png') no-repeat;
+            }
         }
     }
 }
