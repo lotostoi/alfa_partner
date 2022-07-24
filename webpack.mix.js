@@ -15,6 +15,8 @@ mix.js("resources/js/app.js", "public/js")
     .alias({ "@": "resources/js" })
     .alias({ "@l": "resources/js/layouts" })
     .alias({ "@c": "resources/js/components" })
+    .alias({ "@s": "resources/js/store" })
+    .alias({ "@r": "resources/js/router" })
     .react()
     .sourceMaps()
     .sass("resources/sass/app.scss", "public/css");

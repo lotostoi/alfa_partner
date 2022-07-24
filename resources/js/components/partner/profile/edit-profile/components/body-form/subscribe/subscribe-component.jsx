@@ -2,6 +2,10 @@ import React from "react";
 import style from "./style.module.scss";
 import { useEffect } from "react";
 
+import { Tooltip } from "@alfalab/core-components/tooltip";
+
+import Links from "../../links";
+
 import { Radio } from "@alfalab/core-components/radio";
 
 function SubscribeComponent() {
@@ -44,7 +48,7 @@ function SubscribeComponent() {
     }, [checkedUnSubscribed]);
 
     return (
-        <div className="p-4 mt-4 border" style={{ borderRadius: 12 }}>
+        <div className={style.wrapper}>
             <p>Email рассылка</p>
             <div className="d-flex flex-column">
                 <div className="d-flex justify-content-start align-items-center mb-2">
@@ -53,8 +57,19 @@ function SubscribeComponent() {
                         checked={checkedSubscribedAll}
                         label="Подписаться на все новости"
                         name="subscribe"
+                        contentClassName={style.label}
                     />
-                    <span className={style.info_icon}></span>
+
+                    <div>
+                        <Tooltip
+                            content={<div>Информация ...</div>}
+                            position="right"
+                            view="hint"
+                            trigger="click"
+                        >
+                            <span className={style.info_icon}></span>
+                        </Tooltip>
+                    </div>
                 </div>
                 <div className="d-flex justify-content-start align-items-center mb-2">
                     <Radio
@@ -63,7 +78,16 @@ function SubscribeComponent() {
                         label="Подписаться только на мои новости"
                         name="subscribe"
                     />
-                    <span className={style.info_icon}></span>
+                    <div>
+                        <Tooltip
+                            content={<div>Информация ...</div>}
+                            position="right"
+                            view="hint"
+                            trigger="click"
+                        >
+                            <span className={style.info_icon}></span>
+                        </Tooltip>
+                    </div>
                 </div>
                 <div className="d-flex justify-content-start align-items-center mb-2">
                     <Radio
@@ -72,8 +96,20 @@ function SubscribeComponent() {
                         label="Отказаться от подписки"
                         name="subscribe"
                     />
-                    <span className={style.info_icon}></span>
+                    <div>
+                        <Tooltip
+                            content={<div>Информация ...</div>}
+                            position="right"
+                            view="hint"
+                            trigger="click"
+                        >
+                            <span className={style.info_icon}></span>
+                        </Tooltip>
+                    </div>
                 </div>
+            </div>
+            <div className="d-flex d-md-none">
+                <Links />
             </div>
         </div>
     );

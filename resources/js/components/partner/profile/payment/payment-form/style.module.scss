@@ -1,0 +1,150 @@
+@import "@/mixins.scss";
+
+.wrapper_form {
+    padding: 32px 0;
+
+    @include desktop {
+        padding: 32px 0;
+    }
+}
+
+.wrapper_fields {
+    width: 100%;
+    border: 1px solid transparent;
+
+    padding: 0;
+    border: none;
+    flex-direction: column;
+
+    .columns_2,
+    .columns_3,
+    .columns_4,
+    .columns_5 {
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .columns_2:first-child,
+    .columns_3:first-child,
+    .columns_4:first-child,
+    .columns_5:first-child {
+
+        margin-top: 0;
+    }
+
+
+
+    @include desktop {
+        flex-direction: row;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 24px 20px 25px;
+        border: 1px solid #DBDEE1;
+        border-radius: 12px;
+
+        .columns_2,
+        .columns_3,
+        .columns_4,
+        .columns_5,
+        .columns_2:first-child,
+        .columns_3:first-child,
+        .columns_4:first-child,
+        .columns_5:first-child {
+            margin-top: 0;
+        }
+
+
+        .columns_5:nth-child(1) {
+            width: calc(33.333% - 10px);
+        }
+
+        .columns_5:nth-child(2) {
+            width: calc(33.333% - 10px);
+        }
+
+        .columns_5:nth-child(3) {
+            width: calc(33.33% - 10px);
+        }
+
+        .columns_5:nth-child(4) {
+            margin-top: 24px;
+            width: calc(50% - 10px);
+        }
+
+        .columns_5:nth-child(5) {
+            margin-top: 24px;
+            width: calc(50% - 10px);
+        }
+
+        .columns_4 {
+            width: calc(50% - 10px);
+        }
+
+        .columns_4:nth-child(3),
+        .columns_4:nth-child(4) {
+            margin-top: 24px;
+        }
+
+        .columns_3 {
+            width: calc(33.33% - 5px);
+        }
+
+        .columns_2 {
+            width: calc(50% - 5px);
+        }
+    }
+
+    @include desktopX {
+
+
+        .columns_5:nth-child(1) {
+            width: calc(25% - 10px);
+        }
+
+        .columns_5:nth-child(2) {
+            width: calc(25% - 10px);
+        }
+
+        .columns_5:nth-child(3) {
+            width: calc(25% - 10px);
+        }
+
+        .columns_5:nth-child(4) {
+            width: calc(25% - 10px);
+            margin-top: 0;
+        }
+
+        .columns_5:nth-child(5) {
+            margin-top: 24px;
+            width: calc(50% - 10px);
+        }
+
+        .columns_4 {
+            width: calc(25% - 10px);
+        }
+        .columns_4:nth-child(3),
+        .columns_4:nth-child(4) {
+            margin-top: 0;
+        }
+
+        .columns_3 {
+            width: calc(33.33% - 5px);
+        }
+
+        .columns_2 {
+            width: calc(50% - 5px);
+        }
+    }
+}
+
+.btn_save {
+    width: 100%;
+    margin-top: 46px;
+    min-height: 48px;
+
+    @include desktop() {
+        width: 164px;
+        margin-top: 40px;
+    }
+}

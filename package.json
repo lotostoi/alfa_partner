@@ -7,7 +7,8 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "production": "mix --production"
+        "production": "mix --production",
+        "analyze": "source-map-explorer 'public/js/*.js'"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.13.13",
@@ -29,6 +30,7 @@
         "autoprefixer": "10.4.5",
         "react-bootstrap": "^2.4.0",
         "react-redux": "^8.0.2",
-        "react-router-dom": "^6.3.0"
+        "react-router-dom": "^6.3.0",
+        "source-map-explorer": "^2.5.2"
     }
 }

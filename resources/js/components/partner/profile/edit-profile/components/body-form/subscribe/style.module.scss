@@ -1,3 +1,17 @@
+@import "@/mixins.scss";
+
+.wrapper {
+    margin-top: 49px;
+
+    @include tablets() {
+        margin-top: 36px;
+        border: 1px solid #DBDEE1;
+        border-radius: 12px;
+        padding: 36px;
+    }
+
+}
+
 .info_icon {
     cursor: pointer;
     display: block;
@@ -9,4 +23,8 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
+}
+
+.label {
+    width: max-content;
 }

@@ -11,8 +11,10 @@
 
     .mobile {
         justify-content: flex-start;
+        align-items: center;
         width: 100%;
         display: flex;
+        padding: 0 15px;
     }
 
     .desktop {
@@ -22,10 +24,14 @@
     }
 
     .btn_burger {
-        color: white;      
+        color: white;
     }
 
     @include tablets() {
+
+        background-color: transparent;
+        justify-content: flex-end;
+        padding: 40px 48px;
 
         .mobile {
             display: none;
@@ -33,11 +39,8 @@
 
         .desktop {
             display: flex;
+            align-items: center;
         }
-
-        background-color: transparent;
-        justify-content: flex-end;
-        padding: 20px 48px;
 
 
         .link {

@@ -12,6 +12,14 @@ $color-dark-main-bg: #1A304B;
 $color-main-bg-hover: #b63a67;
 $color-second-main-bg: rgba(11, 31, 53, 0.07);
 
+$red:#EF3124;
+
+@mixin desktopX() {
+    @media screen and (min-width: 1921.98px) {
+        @content;
+    }
+}
+
 @mixin desktopHd() {
     @media screen and (min-width: 1599.98px) {
         @content;
@@ -19,7 +27,7 @@ $color-second-main-bg: rgba(11, 31, 53, 0.07);
 }
 
 @mixin desktop() {
-    @media screen and (min-width: 1199.98px) {
+    @media screen and (min-width: 991.98px) {
         @content;
     }
 }
@@ -44,6 +52,7 @@ $color-second-main-bg: rgba(11, 31, 53, 0.07);
     @include desktop() {
         max-width: 970px;
     }
+
     @include tablets {
         max-width: 750px;
     }

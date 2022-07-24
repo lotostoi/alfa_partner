@@ -12,16 +12,36 @@ function ModalSaveChangesProfile() {
     const handleModalOpen = () => setOpen(!open);
     return (
         <>
-            <Button
-                type="button"
-                view="primary"
-                size="m"
-                onClick={handleModalOpen}
-                className="mt-4"
+            <div className={"d-none d-md-flex " + style.btn_wrapper}>
+                <Button
+                    type="button"
+                    view="primary"
+                    size="m"
+                    onClick={handleModalOpen}
+                    className={style.btn}
+                >
+                    Сохранить
+                </Button>
+            </div>
+            <div className={"d-flex d-md-none " + style.btn_wrapper}>
+                <Button
+                    type="button"
+                    size="m"
+                    block
+                    onClick={handleModalOpen}
+                    className={style.btn}
+                >
+                    Сохранить
+                </Button>
+            </div>
+
+            <ModalDesktop
+                open={open}
+                onClose={handleModalOpen}
+                size="s"
+                className={style.wrapper}
+                wrapperClassName="p-0"
             >
-                Сохранить
-            </Button>
-            <ModalDesktop open={open} onClose={handleModalOpen} size="s" className={style.wrapper}>
                 <div className={style.header_wrapper_modal}>
                     <Typography.Text tag="p" className={style.title}>
                         Сохранить изменения
@@ -42,12 +62,10 @@ function ModalSaveChangesProfile() {
                     </Typography.Text>
                 </ModalDesktop.Content>
                 <div className={style.footer_wrapper_modal}>
-                    <Button view="secondary" style={{ width: 199 }}>
+                    <Button view="secondary" onClick={() => setOpen(false)}>
                         Не сохранять
                     </Button>
-                    <Button view="primary" style={{ width: 199 }}>
-                        Сохранить
-                    </Button>
+                    <Button view="primary">Сохранить</Button>
                 </div>
             </ModalDesktop>
         </>

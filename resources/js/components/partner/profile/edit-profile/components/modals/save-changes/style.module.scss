@@ -1,7 +1,32 @@
+@import "@/mixins";
+
+.btn_wrapper {
+
+    margin-top: 53px;
+
+    button {
+        min-height: 48px;
+    }
+
+    @include tablets() {
+        margin-top: 40px;
+    }
+}
+
+
 .wrapper {
     display: flex;
     flex-direction: column;
-    padding: 32px;
+    padding: 32px 16px;
+    border-radius: 0 !important;
+
+    margin-bottom: 0;
+
+    @include phones() {
+        padding: 32px;
+        margin-bottom: auto;
+        border-radius: 12px !important;
+    }
 }
 
 .header_wrapper_modal {
@@ -21,6 +46,11 @@
     display: flex;
     box-sizing: content-box;
     margin: 28px 0;
+    padding: 61px 0 44px;
+
+    @include phones {
+        padding: 0;
+    }
 }
 
 .title {
@@ -30,17 +60,60 @@
     line-height: 26px;
     color: #000000;
     margin-bottom: 0;
+
+
 }
 
 p.content {
     margin: 0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #0B1F35;
+
+    @include phones() {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        text-align: start;
+    }
+
 }
 
 .footer_wrapper_modal {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
     padding: 0;
     display: flex;
     box-sizing: content-box;
+
+    button {
+        min-height: 48px;
+        width: 100% !important;
+    }
+
+    button:first-of-type {
+        margin-bottom: 10px;
+    }
+
+    @include phones() {
+        flex-direction: row;
+
+        button {
+            max-width: 199px;
+            min-height: 56px;
+        }
+
+        button:first-of-type {
+            margin-bottom: 0px;
+        }
+    }
+
+
 }

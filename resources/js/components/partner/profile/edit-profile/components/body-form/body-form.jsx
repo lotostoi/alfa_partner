@@ -1,8 +1,7 @@
 import { Input } from "@alfalab/core-components/input";
 import { Select } from "@alfalab/core-components/select";
 
-import DeleteAccount from "../modals/delete-account";
-import ChangePassword from "../modals/change-passowrd";
+import Links from "../links";
 
 import style from "./style.module.scss";
 
@@ -22,33 +21,49 @@ export default function () {
         <div className={style["body-form"]}>
             <div className="row">
                 <div className="col-12 col-lg-6">
-                    <Input label="Имя/Ник" name="name" className="w-100" />
-                    <br />
-                    <Input label="Телефон" name="phone" className="w-100" />
-                    <br />
+                    <Input
+                        label="Имя/Ник"
+                        name="name"
+                        className={style.input}
+                        block
+                    />
+                    <Input
+                        label="Телефон"
+                        name="phone"
+                        className={style.input}
+                        block
+                    />
                     <Input
                         label="Ссылка на ваш основной сайт"
                         name="phone"
-                        className="w-100"
+                        className={style.input}
+                        block
                     />
                 </div>
-                <div className="col-12 col-lg-6 mt-4 mt-lg-0">
+                <div className="col-12 col-lg-6 mt-0 mt-md-4 mt-lg-0">
                     <Select
                         options={options}
                         label="Кто вы"
                         placeholder="Кто вы"
-                        className="w-100"
+                        className={style.input}
+                        block
                     />
-                    <br />
-                    <Input label="Email" name="email" className="w-100" />
-                    <br />
-                    <Input label="Страна" name="phone" className="w-100" />
+                    <Input
+                        label="Email"
+                        name="email"
+                        className={style.input}
+                        block
+                    />
+                    <Input
+                        label="Страна"
+                        name="phone"
+                        className={style.input}
+                        block
+                    />
                 </div>
             </div>
-            <div className={style.links}>
-                <DeleteAccount />
-                <ChangePassword />
-                <a className={style.link}>Изменить Email</a>
+            <div className="d-none d-md-flex">
+                <Links />
             </div>
         </div>
     );

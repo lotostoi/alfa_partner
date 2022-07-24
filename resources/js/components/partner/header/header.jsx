@@ -1,17 +1,20 @@
 import style from "./style.module.scss";
 
 import { IconButton } from "@alfalab/core-components/icon-button";
-import { BellAddMIcon } from "@alfalab/icons-glyph/BellAddMIcon";
+import { BellMIcon } from "@alfalab/icons-glyph/BellMIcon";
 import { BurgerMIcon } from "@alfalab/icons-glyph/BurgerMIcon";
 
 import HeaderLink from "./components/header-link";
 import ProfileLink from "./components/profile-link";
 import { getUrlByKey } from "@/router";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+
+import MobileLink from "./components/mobile-link";
+
+import { useGetCountNotSeeTicketsQuery } from "../../../store/header";
 
 function PartnerHeader({ isShowModalMenu, setIsShowModalMenu }) {
-    const navigate = useNavigate();
+  
+    const { data } = useGetCountNotSeeTicketsQuery(10);
 
     return (
         <div className={style["partner-header"]}>
@@ -23,13 +26,9 @@ function PartnerHeader({ isShowModalMenu, setIsShowModalMenu }) {
                     className={style.btn_burger}
                     onClick={() => setIsShowModalMenu(!isShowModalMenu)}
                 />
-                <IconButton
-                    view="primary"
-                    size="s"
-                    icon={BellAddMIcon}
-                    onClick={() => navigate(getUrlByKey("news"))}
-                    className={style.btn_burger + " " + "ms-auto"}
-                />
+                <div className="ms-auto">
+                    <MobileLink icon={BellMIcon} urlKey="news" />
+                </div>
             </div>
 
             <div className={style.desktop}>
@@ -42,7 +41,9 @@ function PartnerHeader({ isShowModalMenu, setIsShowModalMenu }) {
                     }
                 >
                     <span>Поддержка</span>
-                    <span className={style.info}>9+</span>
+                    <span className={style.info}>
+                        {data?.count > 9 ? "9+" : data?.count}
+                    </span>
                 </HeaderLink>
                 <HeaderLink
                     to={getUrlByKey("news")}

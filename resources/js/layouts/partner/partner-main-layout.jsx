@@ -38,9 +38,8 @@ function PartnerMainLayout({ filter }) {
                     setIsShowModalMenu={setIsShowModalMenu}
                     isShowModalMenu={isShowModalMenu}
                 />
-                <div className="p-3">
-                    <Outlet />
-                </div>
+
+                <Outlet />
             </div>
         </div>
     );

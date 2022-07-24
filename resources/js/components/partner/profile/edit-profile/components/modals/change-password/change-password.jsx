@@ -44,6 +44,7 @@ function ModalSaveChangesProfile() {
                 onClose={handleModalOpen}
                 size="s"
                 className={style.wrapper}
+                wrapperClassName="p-0"
             >
                 <div className={style.header}>
                     <Typography.Text tag="p" className={style.title}>
@@ -68,7 +69,9 @@ function ModalSaveChangesProfile() {
                         }}
                     />
 
-                    <span className={style.sub_title}>Восстановить пароль</span>
+                    <button className={style.sub_title}>
+                        Восстановить пароль
+                    </button>
 
                     <NewPassword
                         className="mb-3 w-100"
@@ -85,7 +88,11 @@ function ModalSaveChangesProfile() {
                 </ModalDesktop.Content>
 
                 <div className={style.footer}>
-                    <Button view="secondary" className={style.btn}>
+                    <Button
+                        view="secondary"
+                        className={style.btn}
+                        onClick={() => setOpen(false)}
+                    >
                         Отменить
                     </Button>
                     <Button

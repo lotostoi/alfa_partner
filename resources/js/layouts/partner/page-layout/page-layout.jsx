@@ -1,10 +1,12 @@
 import PageNavigation from "@c/common/navigation/page-navigation";
 import { Outlet } from "react-router-dom";
 
+import style from "./style.module.scss";
+
 function PageLayout({ childeRoutes, text }) {
     return (
-        <div className="p-0 p-lg-3">
-            <div className="h2">{text}</div>
+        <div className={style.wrapper}>
+            <div className={style.title}>{text}</div>
 
             {childeRoutes ? (
                 <PageNavigation childeRoutes={childeRoutes} />

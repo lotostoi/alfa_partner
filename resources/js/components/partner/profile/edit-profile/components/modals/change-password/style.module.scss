@@ -1,3 +1,5 @@
+@import "@/mixins.scss";
+
 .show_modal {
     cursor: pointer;
     font-style: normal;
@@ -9,6 +11,7 @@
     color: #EF3124;
     margin-right: 16px;
     text-decoration: none;
+    margin-bottom: 20px;
 
     &:hover {
         color: darken(#EF3124, 10%);
@@ -16,14 +19,19 @@
 
 }
 
-input[type="password"] {
-    -webkit-text-security: disc;
-}
-
 .wrapper {
     display: flex;
     flex-direction: column;
-    padding: 32px;
+    padding: 32px 16px;
+
+    margin-bottom: 0;
+    border-radius: 0 !important;
+
+    @include phones {
+        border-radius: 12px !important;
+        padding: 32px;
+        margin-bottom: auto;
+    }
 
     .header {
         display: flex;
@@ -54,7 +62,10 @@ input[type="password"] {
         margin: 28px 0;
 
         &>.sub_title {
-
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            outline: none;
             font-style: normal;
             font-weight: 500;
             font-size: 16px;
@@ -62,8 +73,12 @@ input[type="password"] {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            color: #546272;
+            color: var(--bs-red);
             margin: 8px 0 28px;
+
+            @include phones {
+                color: var(--bs-light-gray);
+            }
         }
 
         &>.input_wrapper {
@@ -80,18 +95,41 @@ input[type="password"] {
         padding: 0;
         display: flex;
         box-sizing: content-box;
+        flex-direction: column;
 
-        & .btn {
-            width: 199px;
-            cursor: not-allowed;
+        .btn {
+            min-height: 48px;
+            width: 100% !important;
+        }
 
-            &:disabled {
-                &:active {
-                    transform: scale(1);
-                }
+        .btn:first-of-type {
+            margin-bottom: 10px;
+        }
 
-                cursor: not-allowed !important;
+        .btn:disabled {
+            &:active {
+                transform: scale(1);
+            }
 
+            cursor: not-allowed !important;
+
+        }
+
+        @include phones() {
+            flex-direction: row;
+
+            button {
+                max-width: 199px;
+                min-height: 56px;
+            }
+
+            button:first-of-type {
+                margin-bottom: 0px;
+            }
+
+            &.btn {
+                width: 199px;
+                cursor: not-allowed;
             }
         }
     }

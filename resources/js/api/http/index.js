@@ -8,6 +8,7 @@ axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 export default function api(navigate = null) {
     const api = axios.create({
         baseURL: "/api/",
+        headers: { Accept: "application/json, text/plain, */*" },
     });
 
     api.interceptors.response.use(

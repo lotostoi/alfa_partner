@@ -186,8 +186,6 @@ const menuRoutes = (() => {
     return [...firstPart, ...andMobile, ...lastPart];
 })();
 
-console.log(menuRoutes);
-
 const headerRoutes = routeList.filter(({ location }) => location === "header");
 
 const { getUrlByKey, getUrlByShortKey } = new RoutesMap(onlyRoutes);

@@ -1,15 +1,4 @@
-@import "@/mixins.scss";
-
-.wrapper_fields {
-    box-sizing: border-box;
-
-    display: flex;
-    flex-wrap: wrap;
-    padding: 24px 10px 24px 10px;
-
-    border: 1px solid #DBDEE1;
-    border-radius: 8px;
-}
+@import '@/mixins.scss';
 
 .se_agree_contract_wrapper {
     margin-top: 32px;
@@ -66,23 +55,36 @@
 
             @include desktop() {
                 width: calc(50% - 5px);
-
                 padding: 12px 14px 12px;
                 border: 1px solid #546272;
                 border-radius: 4px;
                 box-sizing: border-box;
                 margin-bottom: 10px;
+            }
 
-                &>.title {
-                    font-style: normal;
-                    font-weight: 400;
+            &>.title {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+
+                display: flex;
+                align-items: center;
+                color: #0B1F35;
+
+                @include desktop() {
                     font-size: 14px;
                     line-height: 20px;
-                    color: #0B1F35;
                 }
+            }
 
-                &>.btn {
-                    width: max-content;
+
+            &>.btn {
+                display: none;
+
+                @include desktop() {
+                    display: flex;
+                    width: fit-content;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -90,11 +92,22 @@
                 }
             }
 
+            &>.link {
+                display: flex;
+                color: var(--bs-red);
+                font-weight: 500;
+                font-size: 14px;
+                line-height: 24px;
+                text-decoration: none;
+                margin-top: -10px;
+                margin-bottom: 20px;
 
+                @include desktop() {
+                    display: none;
+                }
+            }
 
         }
 
     }
-
-
 }

@@ -27,10 +27,10 @@ function ModalSaveChangesProfile() {
                 onClose={handleModalOpen}
                 size="s"
                 className={style.wrapper}
+                wrapperClassName="p-0"
             >
                 <div className={style.header}>
-                    <Typography.Text tag="p" className={style.title}>
-                        Удалить аккаунт
+                    <Typography.Text tag="p" className={style.title}>Удалить аккаунт
                     </Typography.Text>
                     <IconButton
                         view="primary"
@@ -59,7 +59,7 @@ function ModalSaveChangesProfile() {
                 </ModalDesktop.Content>
 
                 <div className={style.footer}>
-                    <Button view="secondary" className={style.btn}>
+                    <Button view="secondary" className={style.btn} onClick={() => setOpen(false)}>
                         Отменить
                     </Button>
                     <Button view="primary" className={style.btn}>
