@@ -1,0 +1,46 @@
+@import '@/mixins';
+
+.wrapper {
+
+    @include desktop {
+        margin-top: 8px;
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        background: #FFFFFF;
+        border-radius: 4px;
+        min-height: 120px;
+
+        &>.col_image {
+            width: 33%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            &>img {
+                width: 150px;
+                height: 96px;
+            }
+        }
+
+        &>.col_title,
+        &>.col_action,
+        &>.col_cashback {
+            width: 33%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: #0B1F35;
+
+            &>.value {
+                margin-left: 5px;
+                color: #2b435d;
+            }
+        }
+    }
+
+}

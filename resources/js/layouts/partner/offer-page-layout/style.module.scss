@@ -1,0 +1,23 @@
+@import "@/mixins.scss";
+
+.wrapper {
+    
+}
+
+.title {
+    padding: 20px 16px 0;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 26px;
+    color: #0B1F35;
+    position: relative;
+    overflow-y: auto;
+
+    @include tablets() {
+        font-size: 30px;
+        padding: 56px 40px 0;
+        overflow-y: auto;
+    }
+}

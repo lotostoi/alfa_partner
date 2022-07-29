@@ -15,6 +15,8 @@ import Profile from "../pages/profile";
 import PersonalInfo from "../pages/profile/personal-info";
 import PersonalPayments from "../pages/profile/payments/index";
 
+import OffersPage from "../pages/Offers"
+
 import NewsPage from "../pages/NewsPage";
 import SupportPage from "../pages/SupportPage";
 
@@ -107,7 +109,7 @@ const routeList = [
     {
         name: "offers",
         path: "offers",
-        component: <PaymentsPage />,
+        component: <OffersPage />,
         location: "menu",
         text: "Офферы",
         type: "route",

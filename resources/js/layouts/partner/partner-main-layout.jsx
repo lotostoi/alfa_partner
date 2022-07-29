@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { connect } from "react-redux";
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import Filter from "../../components/partner/filter";
 import PartnerNavigation from "../../components/partner/navigation/navigation";
@@ -13,12 +13,18 @@ import PartnerHeader from "../../components/partner/header";
 function PartnerMainLayout({ filter }) {
     const [isShow, setIsShow] = useState(true);
 
+    const { pathname } = useLocation();
+
+    const bgcClass = pathname.startsWith("/offers") ? style.bgc_for_offers : "";
+
     const [isShowModalMenu, setIsShowModalMenu] = useState(false);
 
     return (
-        <div className={[style["main_layout"], "w-100 d-flex"].join(" ")}>
+        <div
+            className={[style.main_layout, bgcClass, "w-100 d-flex"].join(" ")}
+        >
             {filter ? (
-                <div className={style["main_layout_filter"]}>
+                <div className={style.main_layout_filter}>
                     <Filter />
                 </div>
             ) : null}

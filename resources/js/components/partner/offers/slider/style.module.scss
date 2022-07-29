@@ -1,0 +1,16 @@
+@import "@/mixins";
+
+.wrapper {
+    @include desktop {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+        position: absolute;
+        top: -158px;
+        left: 46px;
+        padding-right: 46px;
+        max-width: calc(100% - 46px);
+        height: 252px;
+        background-color: transparent;
+    }
+}

@@ -1,0 +1,14 @@
+@import '@/mixins';
+
+.wrapper {
+    @include desktop {
+        margin-top: 245px;
+        height: calc(100vh - 132px - 80px - 196px);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-color: #E5E5E5;
+        position: relative;
+        padding: 112px 46px 20px;
+    }
+}

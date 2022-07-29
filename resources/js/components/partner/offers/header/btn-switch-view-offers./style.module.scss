@@ -1,0 +1,19 @@
+.wrapper {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2px 12px;
+    align-items: center;
+
+    border: 1px solid #DBDEE1;
+    border-radius: 8px;
+
+    .default {
+        color:  #B6BCC3;
+    }
+
+    .active {
+        color: #0B1F35;
+    }
+}

@@ -1,0 +1,8 @@
+@import '@/mixins';
+
+.wrapper {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,4 +1,4 @@
-import PageLayout from "../../layouts/partner/page-layout";
+import PageLayout from "../../layouts/partner/default-page-layout";
 
 function OrdersPage(props) {
     return <PageLayout {...props} />;

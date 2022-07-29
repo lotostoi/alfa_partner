@@ -4,13 +4,14 @@ import style from "./style.module.scss";
 
 import { Button } from "@alfalab/core-components/button";
 import { FormatXlsSWhiteIcon } from "@alfalab/icons-classic/FormatXlsSWhiteIcon";
-import { FilterMIcon } from "@alfalab/icons-glyph/FilterMIcon";
+
 import { CloseCircleMBlackIcon } from "@alfalab/icons-classic/CloseCircleMBlackIcon";
 import { SettingsCompactSIcon } from "@alfalab/icons-glyph/SettingsCompactSIcon";
 import { InfoSIcon } from "@alfalab/icons-classic/InfoSIcon";
 import { Table } from "@alfalab/core-components/table";
 import { Typography } from "@alfalab/core-components/typography";
 
+import BtnToggleFilter from "@c/common/buttons/btn-toggle-filter";
 
 const data = [
     {
@@ -126,7 +127,7 @@ const data = [
     },
 ];
 
-function checkStatus(status = '') {
+function checkStatus(status = "") {
     if (!status) {
         return "primary";
     }
@@ -141,7 +142,7 @@ function checkStatus(status = '') {
     }
 }
 
-export default function ({toggleFilter}) {
+export default function ({ toggleFilter }) {
     const [perPage, setPerPage] = useState(5);
     const [page, setPage] = useState(0);
 
@@ -157,292 +158,286 @@ export default function ({toggleFilter}) {
         return data.slice(page * perPage).slice(0, perPage);
     }, [data, page, perPage]);
 
-    return <div className={style.orders}>
-                <div className={style.orders_top_group}>
-                    <div className={style.orders_btns}>
-                        <Button
-                            leftAddons={<FilterMIcon/>}
-                            type="button"
-                            view="tertiary"
-                            size="xs"
-                            className="me-3"
-                            onClick={() => toggleFilter()}
-                        >
-                            Фильтр
-                        </Button>
+    return (
+        <div className={style.orders}>
+            <div className={style.orders_top_group}>
+                <div className={style.orders_btns}>
+                   
+                    <BtnToggleFilter toggleFilter={toggleFilter} />
 
-                        <Button
-                            rightAddons={<CloseCircleMBlackIcon/>}
-                            type="button"
-                            view="tertiary"
-                            size="xs"
-                            className={style.button_theme_light_bordered}
-                        >
-                            44 637 заявок с 01.01.2022 по 24.02.2022 на сумму 19 587
-                            000 ₽<span className={style.divider}> | </span>
-                        </Button>
-
-                        <Button
-                            leftAddons={<FormatXlsSWhiteIcon/>}
-                            type="button"
-                            view="primary"
-                            size="xs"
-                            className="ms-auto"
-                        >
-                            Экспорт в XLSX
-                        </Button>
-                    </div>
-                    <div className={style.orders_settings}>
-                        <Button
-                            leftAddons={<SettingsCompactSIcon/>}
-                            type="button"
-                            view="tertiary"
-                            size="xs"
-                            className={style.button_theme_light_bordered}
-                        >
-                            Отображение колонок: все
-                        </Button>
-                    </div>
-                </div>
-
-                <div style={{margin: "24px 0 40px"}}>
-                    <Table
-                        className="overflow-scroll"
-                        wrapper={false}
-                        pagination={
-                            <Table.Pagination
-                                className={style["pagination_theme_light"]}
-                                perPage={perPage}
-                                currentPageIndex={page}
-                                pagesCount={pagesCount}
-                                onPageChange={handlePageChange}
-                                onPerPageChange={handlePerPageChange}
-                                activePadding={1}
-                                sidePadding={1}
-                            />
-                        }
+                    <Button
+                        rightAddons={<CloseCircleMBlackIcon />}
+                        type="button"
+                        view="tertiary"
+                        size="xs"
+                        className={style.button_theme_light_bordered}
                     >
-                        <Table.THead rowClassName={style["tr_theme_light"]}>
-                            <Table.THeadCell
-                                title="id/id2 заявки"
-                                className={style["th_theme_light"]}
-                            >
-                                id/id2 заявки
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Статус"
-                                className={style["th_theme_light"]}
-                            >
-                                Статус
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Дата и время"
-                                className={style["th_theme_light"]}
-                            >
-                                Дата и время
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Дата ЦД"
-                                className={style["th_theme_light"]}
-                            >
-                                Дата ЦД
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="CLICK_ID WEB_ID"
-                                className={style["th_theme_light"]}
-                            >
-                                CLICK_ID WEB_ID
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Тип"
-                                className={style["th_theme_light"]}
-                            >
-                                Тип
-                                <InfoSIcon/>
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Лендинг"
-                                className={style["th_theme_light"]}
-                            >
-                                Лендинг
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Реестр выплат"
-                                className={style["th_theme_light"]}
-                            >
-                                Реестр выплат
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Ссылка заблокирована"
-                                className={style["th_theme_light"]}
-                            >
-                                Ссылка заблокирована
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="platformID"
-                                className={style["th_theme_light"]}
-                            >
-                                platformID
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Ссылка"
-                                className={style["th_theme_light"]}
-                            >
-                                Ссылка
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Оффер"
-                                className={style["th_theme_light"]}
-                            >
-                                Оффер
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Целевое действие"
-                                className={style["th_theme_light"]}
-                            >
-                                Целевое действие
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Категория заявки"
-                                className={style["th_theme_light"]}
-                            >
-                                Категория заявки
-                            </Table.THeadCell>
-                            <Table.THeadCell
-                                title="Начислено"
-                                className={style["th_theme_light"]}
-                            >
-                                Начислено ₽
-                            </Table.THeadCell>
-                        </Table.THead>
-                        <Table.TBody>
-                            {currentPageData.map((row) => (
-                                <Table.TRow key={row.id}>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.id}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                            color={checkStatus(row.status)}
-                                        >
-                                            {row.status}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.datetime}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.date_cd}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.click_id}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.type}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.landing}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.reestr}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.is_blocked_link}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.platformID}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.link}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.offer}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.target_action}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.category}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                    <Table.TCell className={style.cell_theme_light}>
-                                        <Typography.Text
-                                            view="primary-small"
-                                            tag="span"
-                                        >
-                                            {row.total}
-                                        </Typography.Text>
-                                    </Table.TCell>
-                                </Table.TRow>
-                            ))}
-                        </Table.TBody>
-                    </Table>
+                        44 637 заявок с 01.01.2022 по 24.02.2022 на сумму 19 587
+                        000 ₽<span className={style.divider}> | </span>
+                    </Button>
+
+                    <Button
+                        leftAddons={<FormatXlsSWhiteIcon />}
+                        type="button"
+                        view="primary"
+                        size="xs"
+                        className="ms-auto"
+                    >
+                        Экспорт в XLSX
+                    </Button>
+                </div>
+                <div className={style.orders_settings}>
+                    <Button
+                        leftAddons={<SettingsCompactSIcon />}
+                        type="button"
+                        view="tertiary"
+                        size="xs"
+                        className={style.button_theme_light_bordered}
+                    >
+                        Отображение колонок: все
+                    </Button>
                 </div>
             </div>
+
+            <div style={{ margin: "24px 0 40px" }}>
+                <Table
+                    className="overflow-scroll"
+                    wrapper={false}
+                    pagination={
+                        <Table.Pagination
+                            className={style["pagination_theme_light"]}
+                            perPage={perPage}
+                            currentPageIndex={page}
+                            pagesCount={pagesCount}
+                            onPageChange={handlePageChange}
+                            onPerPageChange={handlePerPageChange}
+                            activePadding={1}
+                            sidePadding={1}
+                        />
+                    }
+                >
+                    <Table.THead rowClassName={style["tr_theme_light"]}>
+                        <Table.THeadCell
+                            title="id/id2 заявки"
+                            className={style["th_theme_light"]}
+                        >
+                            id/id2 заявки
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Статус"
+                            className={style["th_theme_light"]}
+                        >
+                            Статус
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Дата и время"
+                            className={style["th_theme_light"]}
+                        >
+                            Дата и время
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Дата ЦД"
+                            className={style["th_theme_light"]}
+                        >
+                            Дата ЦД
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="CLICK_ID WEB_ID"
+                            className={style["th_theme_light"]}
+                        >
+                            CLICK_ID WEB_ID
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Тип"
+                            className={style["th_theme_light"]}
+                        >
+                            Тип
+                            <InfoSIcon />
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Лендинг"
+                            className={style["th_theme_light"]}
+                        >
+                            Лендинг
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Реестр выплат"
+                            className={style["th_theme_light"]}
+                        >
+                            Реестр выплат
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Ссылка заблокирована"
+                            className={style["th_theme_light"]}
+                        >
+                            Ссылка заблокирована
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="platformID"
+                            className={style["th_theme_light"]}
+                        >
+                            platformID
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Ссылка"
+                            className={style["th_theme_light"]}
+                        >
+                            Ссылка
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Оффер"
+                            className={style["th_theme_light"]}
+                        >
+                            Оффер
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Целевое действие"
+                            className={style["th_theme_light"]}
+                        >
+                            Целевое действие
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Категория заявки"
+                            className={style["th_theme_light"]}
+                        >
+                            Категория заявки
+                        </Table.THeadCell>
+                        <Table.THeadCell
+                            title="Начислено"
+                            className={style["th_theme_light"]}
+                        >
+                            Начислено ₽
+                        </Table.THeadCell>
+                    </Table.THead>
+                    <Table.TBody>
+                        {currentPageData.map((row) => (
+                            <Table.TRow key={row.id}>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.id}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                        color={checkStatus(row.status)}
+                                    >
+                                        {row.status}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.datetime}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.date_cd}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.click_id}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.type}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.landing}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.reestr}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.is_blocked_link}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.platformID}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.link}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.offer}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.target_action}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.category}
+                                    </Typography.Text>
+                                </Table.TCell>
+                                <Table.TCell className={style.cell_theme_light}>
+                                    <Typography.Text
+                                        view="primary-small"
+                                        tag="span"
+                                    >
+                                        {row.total}
+                                    </Typography.Text>
+                                </Table.TCell>
+                            </Table.TRow>
+                        ))}
+                    </Table.TBody>
+                </Table>
+            </div>
+        </div>
+    );
 }
