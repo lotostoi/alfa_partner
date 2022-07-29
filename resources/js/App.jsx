@@ -18,17 +18,17 @@ import { useIsAuthQuery } from "./store/user/user.api";
 import PartnerMainLayout from "@l/partner/partner-main-layout.jsx";
 
 function App() {
-    const { data } = useIsAuthQuery();
-    useEffect(() => {
+    // const { data } = useIsAuthQuery();
+    // useEffect(() => {
 
-        if (history.location.pathname !== "/login" && typeof data?.to === "string") {
-            history.push(data?.to);
-        }
+    //     if (history.location.pathname !== "/login" && typeof data?.to === "string") {
+    //         history.push(data?.to);
+    //     }
 
-        if (history.location.pathname === "/login" && typeof data?.to !== "string") {
-            history.push("/main");
-        }
-    }, []);
+    //     if (history.location.pathname === "/login" && typeof data?.to !== "string") {
+    //         history.push("/main");
+    //     }
+    // }, []);
 
     return (
         <div className="w-100 p-0">
