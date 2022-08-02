@@ -6,11 +6,13 @@ import { connect } from "react-redux";
 
 import { Outlet, useLocation } from "react-router-dom";
 
-import Filter from "../../components/partner/filter";
+import FilterWrapper from "../../components/common/filter/filter";
+
+
 import PartnerNavigation from "../../components/partner/navigation/navigation";
 import PartnerHeader from "../../components/partner/header";
 
-function PartnerMainLayout({ filter }) {
+function PartnerMainLayout({ filter, component }) {
     const [isShow, setIsShow] = useState(true);
 
     const { pathname } = useLocation();
@@ -23,11 +25,14 @@ function PartnerMainLayout({ filter }) {
         <div
             className={[style.main_layout, bgcClass, "w-100 d-flex"].join(" ")}
         >
-            {filter ? (
-                <div className={style.main_layout_filter}>
-                    <Filter />
-                </div>
-            ) : null}
+            <div
+                className={
+                    style.filter_wrapper + " " + (filter && style.active)
+                }
+            >
+                <FilterWrapper component={component} />
+            </div>
+
             <PartnerNavigation
                 setIsShow={setIsShow}
                 isShowModalMenu={isShowModalMenu}

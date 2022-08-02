@@ -52,19 +52,12 @@ const optionsBlockLink = [
 ];
 
 
-export default function ({toggleFilter, type = 'orders'}) {
+export default function ({type = 'orders'}) {
     const [valueFrom, setValueFrom] = useState({ value: '', date: null });
     const [valueTo, setValueTo] = useState({ value: '', date: null });
 
     return (
         <div className={style.filter}>
-            <div className={style.filter_top_group}>
-                <div className={style.filter_title}>Фильтр</div>
-                <div className={style.filter_close}
-                     onClick={() => toggleFilter()}
-                ></div>
-            </div>
-
             {type !== 'orders'
                 // Заявки
                 ?

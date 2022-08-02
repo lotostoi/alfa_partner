@@ -8,7 +8,7 @@ export default function ({ offers }) {
             <ListHeader />
             <div>
                 {offers.map((offer) => (
-                    <OfferViewAsRow {...offer} />
+                    <OfferViewAsRow {...offer} key={offer.offerId} />
                 ))}
             </div>
         </div>

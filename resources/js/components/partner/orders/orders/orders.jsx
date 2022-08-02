@@ -13,6 +13,8 @@ import { Typography } from "@alfalab/core-components/typography";
 
 import BtnToggleFilter from "@c/common/buttons/btn-toggle-filter";
 
+import Filter from "../../filter/filter";
+
 const data = [
     {
         id: 28,
@@ -142,7 +144,7 @@ function checkStatus(status = "") {
     }
 }
 
-export default function ({ toggleFilter }) {
+export default function () {
     const [perPage, setPerPage] = useState(5);
     const [page, setPage] = useState(0);
 
@@ -162,8 +164,9 @@ export default function ({ toggleFilter }) {
         <div className={style.orders}>
             <div className={style.orders_top_group}>
                 <div className={style.orders_btns}>
-                   
-                    <BtnToggleFilter toggleFilter={toggleFilter} />
+                    <BtnToggleFilter>
+                        <Filter />
+                    </BtnToggleFilter>
 
                     <Button
                         rightAddons={<CloseCircleMBlackIcon />}

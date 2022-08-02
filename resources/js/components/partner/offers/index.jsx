@@ -5,6 +5,7 @@ import Paginator from "../../common/pagination";
 
 import OffersList from "./offers-list";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const carts = [
     {

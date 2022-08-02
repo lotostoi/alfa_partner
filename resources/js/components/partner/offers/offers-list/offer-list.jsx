@@ -3,7 +3,6 @@ import style from "./style.module.scss";
 import dataPlug from "./data-plug";
 import CartList from "./card-list";
 import RowList from "./row-list";
-import { useEffect } from "react";
 const offers = dataPlug();
 
 export default function ({ viewOfOffers }) {

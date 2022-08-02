@@ -9,7 +9,7 @@ export default () => {
         count--;
         arrayOffers.push({
             offerId: uniqueId(),
-            imgUrl: "https://dev.alfa-partners.ru/img/offers/23.png",
+            imgUrl: "/assets/img/offers/offer-image.svg",
             title: "Кредитная карта AlfaTravel",
             tags: [
                 {

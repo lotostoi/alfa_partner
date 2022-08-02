@@ -3,13 +3,21 @@ import { IconButton } from "@alfalab/core-components/icon-button";
 import { ScheduleMIcon } from "@alfalab/icons-glyph/ScheduleMIcon";
 import { TileMIcon } from "@alfalab/icons-glyph/TileMIcon";
 import { useState } from "react";
+import { set } from "lodash";
+import { useEffect } from "react";
 
 export default function ({ className, getValue }) {
-    const [value, setValue] = useState(
-        localStorage.getItem("switchViewOffers")
-            ? localStorage.getItem("switchViewOffers")
-            : "default"
-    );
+    const [value, setValue] = useState("default");
+
+    const defaultValue = localStorage.getItem("switchViewOffers")
+        ? localStorage.getItem("switchViewOffers")
+        : "default";
+        
+    //! переписать
+    useEffect(() => {
+        setValue(defaultValue);
+        getValue(defaultValue);
+    }, []);
 
     const handler = (_value) => {
         setValue(_value);

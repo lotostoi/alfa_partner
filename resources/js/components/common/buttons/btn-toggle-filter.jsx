@@ -1,7 +1,28 @@
 import { Button } from "@alfalab/core-components/button";
 import { FilterMIcon } from "@alfalab/icons-glyph/FilterMIcon";
 
-export default function ({ toggleFilter }) {
+import { connect } from "react-redux";
+
+import { toggleFilter, setComponent } from "@s/actions/filterActions";
+import { useEffect } from "react";
+const mapStateToProps = (state) => ({ filter: state.filters.filter });
+const mapDispatchToProps = {
+    toggleFilter: toggleFilter,
+    setComponent: setComponent,
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(function ({ toggleFilter, setComponent, children, filter }) {
+    const handler = () => {
+        toggleFilter();
+    };
+
+    useEffect(() => {
+        setComponent(children);
+    }, [filter]);
+
     return (
         <Button
             leftAddons={<FilterMIcon />}
@@ -9,9 +30,9 @@ export default function ({ toggleFilter }) {
             view="tertiary"
             size="xxs"
             className="me-3"
-            onClick={() => toggleFilter()}
+            onClick={handler}
         >
             Фильтр
         </Button>
     );
-}
+});

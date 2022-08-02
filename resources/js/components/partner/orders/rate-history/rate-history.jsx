@@ -133,7 +133,7 @@ export default function () {
 
             <div className={style.rate_history_table} style={{ margin: '24px 0 40px' }}>
                 <div className={[style['rate_history_table_top_group'], 'd-flex'].join(' ')}>
-                    <h2 className={style['rate_history_table_title']}>Дебетовая карта Пятерочка</h2>
+                    <h2 className={style['rate_history_table_title']}>Дебетовая карта Пятерочкаd</h2>
                     <IconButton
                         className={[style['rate_history_table_expand'], 'ms-auto'].join(" ")}
                         view='primary'
@@ -258,7 +258,7 @@ export default function () {
                                 Тип ставки
                             </Table.THeadCell>
                         </Table.THead>
-                        <Table.TBody>
+                        <Table.TBody>ffff
                             {currentPageDataAlfa.map(row => (
                                 <Table.TRow key={row.id}>
                                     <Table.TCell className={style.cell_theme_light}>
